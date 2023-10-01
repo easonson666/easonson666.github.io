@@ -1,0 +1,61 @@
+[
+    {
+        "blockName": "Input",
+        "parent": [],
+        "child": [1, 2],
+        "args": {
+            "inputSize": [32, 2],
+            "outputSize": []
+        }
+    },
+    {
+        "blockName": "Linear",
+        "parent": [0],
+        "child": [3],
+        "args": {
+            "inputSize": [],
+            "outputSize": [32, 5],
+            "bias": 1
+        }
+    },
+    {
+        "blockName": "Linear",
+        "parent": [0],
+        "child": [3],
+        "args": {
+            "inputSize": [],
+            "outputSize": [32, 5],
+            "bias": 1
+        }
+    },
+    {
+        "blockName": "Concat",
+            "parent": [1, 2],
+            "child": [4],
+            "args": {
+                "inputSize": [],
+                "outputSize": [],
+                "dim": 1
+            }
+    },
+    {
+        "blockName": "Linear",
+        "parent": [3],
+        "child": [5],
+        "args": {
+            "inputSize": [],
+            "outputSize": [32, 1],
+            "bias": 1
+        }
+    },
+    {
+        "blockName": "Activation",
+        "parent": [4],
+        "child": [],
+        "args": {
+            "inputSize": [],
+            "outputSize": [],
+            "mode": "ReLU"
+        }
+    }
+]
