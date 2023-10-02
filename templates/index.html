@@ -10,9 +10,9 @@
       html {font-family: Inter;font-size: 16px;}
       body {background-color: var(--dl-color-gray-white);}
     </style>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./index.js" type="module"></script>
-    <script src="./parameterBarHandler.js" type="module"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="{{ url_for('static', filename='index.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='parameterBarHandler.js') }}" type="module"></script>
   </head>
   <body>
 
