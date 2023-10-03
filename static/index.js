@@ -186,9 +186,13 @@ function onInputChange(event) {
     var idNum = event.target.id.split(':')[1];
     var parameterName = event.target.id.split(':')[0];
     if(parameterName == 'child'||parameterName == 'parent') {
-        backendOutput[idNum][parameterName] = event.target.value;
+        backendOutput[idNum][parameterName] = event.target.value.split(',').map((x)=>parseInt(x));
     } else {
-        backendOutput[idNum]["args"][parameterName] = event.target.value;
+        if(event.target.type == 'text') {
+            backendOutput[idNum]["args"][parameterName] = event.target.value.split(',').map((x)=>parseInt(x));
+        }else {
+            backendOutput[idNum]["args"][parameterName] = event.target.value;
+        }
     }
     console.log(backendOutput);
 }
@@ -199,4 +203,31 @@ window.onInputChange = onInputChange;
 
 //compile the model------------------------------------------------------------------------------------------------------------------------
 
+function sendingData() {//sending frontend data to the backend
+    fetch('/index', {
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        method : 'POST',
+        body : JSON.stringify( {backendOutput})
+    }).then(function (response){
+
+        if(response.ok) {
+            response.json()
+            .then(function(response) {
+                console.log(response);
+            });
+        }
+        else {
+            throw Error('Something went wrong');
+        }
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+}
+
+
+
+window.sendingData = sendingData;
 

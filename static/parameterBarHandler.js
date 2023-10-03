@@ -16,8 +16,8 @@ export function getParameters(newBar ,blockParameterData, idNum, blockType, back
     BlkArgument["child"] = [];
     BlkArgument["args"] = {};
     if(isActivation == true) BlkArgument["args"]["mode"] = blockType;
-    BlkArgument["args"]["inputSize"] = null;
-    BlkArgument["args"]["outputSize"] = null;
+    BlkArgument["args"]["inputSize"] = [];
+    BlkArgument["args"]["outputSize"] = [];
     //a temporary area for testing-------------------------------------------------------------------------------------------------- 
     const parentText = document.createElement('div');
     parentText.textContent = 'parent';
@@ -33,7 +33,7 @@ export function getParameters(newBar ,blockParameterData, idNum, blockType, back
     const childInput = document.createElement('input');
     childInput.setAttribute('type', 'text');
     childInput.setAttribute('id', 'child' + ':' + idNum);
-    parentInput.setAttribute('onchange', 'onInputChange(event)');
+    childInput.setAttribute('onchange', 'onInputChange(event)');
     newBar.appendChild(childInput);
     //a temporary area for testing-------------------------------------------------------------------------------------------------- 
 
@@ -53,7 +53,7 @@ export function getParameters(newBar ,blockParameterData, idNum, blockType, back
         cutLine.setAttribute('class', 'parameterCutLine');
         newBar.appendChild(cutLine);
 
-        BlkArgument["args"][numericParameter] = null;
+        BlkArgument["args"][numericParameter] = [];
     }
 
     const selectableParameters = blockParameterData[blockType]["selectable"];
